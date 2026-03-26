@@ -261,8 +261,8 @@ model = cvae_model(enc_in_shape, latent_dim)
 model.summary()
 
 train_cvae(model, train_dataset, val_dataset,epochs=2000, patience=8, factor=0.5, min_lr=1e-9, saveM="cvae21_model.keras",saveW="cvae21.weights.h5", stop=60)
-model.save('vae.d'+str(latent_dim)+'.keras')
-model.save_weights('vae.d'+str(latent_dim)+'.weights.h5')
+#model.save('vae.d'+str(latent_dim)+'.keras')
+#model.save_weights('vae.d'+str(latent_dim)+'.weights.h5')
 
 '''
 data = np.load('/home/jseeyave3/FluidMasks/DAtrain1B.AngSweep.FM.npy')
@@ -273,7 +273,7 @@ np.save('prediction.d'+str(latent_dim),pred) #'''
 
 ############################################################################################################
 # Extract latent from trained model ########################################################################
-model.load_weights('vae.d'+str(latent_dim)+'.weights.h5')
+model.load_weights('cvae21.weights.h5')
 # latent model
 bottleneck_model = tf.keras.Model(
     inputs=model.input,
